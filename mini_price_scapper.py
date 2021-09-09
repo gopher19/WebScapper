@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup 
 import json
+import re
 baseurl = "https://www.hepsiburada.com/bebelac-gold-3-cocuk-devam-sutu-1250-gr-900-gr-350-gr-1-yasindan-itibaren-p-HBV00000HE7CW"
 headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"}
 # HTTP status code 403 Forbidden. The server understood the request, but is refusing to fulfill it. 
@@ -36,7 +37,7 @@ def price_scrapper(baseurl,headers):
     for element in list2:
         new_element = element.split(",")
         list3.append(new_element)
-    
+    list4 = []
     for element in list3:
         for element1 in element:
             if element1.find("merchantName")!=-1:
